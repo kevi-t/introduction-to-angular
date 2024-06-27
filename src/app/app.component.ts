@@ -38,5 +38,11 @@ export class AppComponent {
       laundry: false,
     }
   ];
+  // Union Type
+  selectedLocation: HousingLocation | undefined;
+  // Method
+  updateSelectedLocation(location: HousingLocation) {
+    this.selectedLocation = location;
+   } searchHousingLocations() {}
 
 }

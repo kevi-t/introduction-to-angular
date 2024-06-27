@@ -2,8 +2,10 @@
     <header><img src="../assets/logo.svg" alt="fairhouse">Fairhouse</header>
     <section>
         <app-housing-list [locationList]="housingLocationList" (locationSelectedEvent)="updateSelectedLocation($event)"></app-housing-list>
+        <!-- add the *ngIf attribute to the ng-container element. -->
+        <ng-container *ngIf="selectedLocation">
         <!-- you use the optional chaining operator to retrieve the values from the property.
-          You're also using ternary syntax for the wifi and laundry boolean values. 
+         You're also using ternary syntax for the wifi and laundry boolean values. 
          This provides the opportunity to display a custom message, depending on the value. -->
         <article>
             <img [src]="selectedLocation?.photo">
@@ -13,5 +15,11 @@
             <p>{{selectedLocation?.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
             <p>{{selectedLocation?.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
            </article>
+        </ng-container>
     </section>
 </main>
+
+<!-- Todo -->
+<!-- The data is hard-coded in the app. A great refactor is to add a service to contain the data.
+The details page is currently displayed on the same page, but it would be cool to move the details to their own page and take advantage of Angular routing.
+One other update would be to host the data at a rest endpoint and use the HTTP package in Angular to load the data at runtime. -->
